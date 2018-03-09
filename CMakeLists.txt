@@ -13,6 +13,8 @@ QT5_WRAP_UI(UI_FILES main-window.ui)
 set(SOURCES main.cpp
     main-window.hpp
     main-window.cpp
+    field.hpp
+    field.cpp
     )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${UI_FILES})

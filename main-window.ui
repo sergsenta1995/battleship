@@ -6,54 +6,122 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
-    <height>555</height>
+    <width>1046</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QGraphicsView" name="field_1_graphicsView"/>
-   </item>
-   <item row="0" column="1">
-    <widget class="QGraphicsView" name="field_2_graphicsView"/>
-   </item>
-   <item row="1" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="ship_1_label">
-       <property name="text">
-        <string>ship 1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="ship_2_label">
-       <property name="text">
-        <string>ship 2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="ship_3_label">
-       <property name="text">
-        <string>ship 3</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="ship_4_label">
-       <property name="text">
-        <string>ship 4</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>1028</width>
+     <height>590</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="Field" name="field_2_graphicsView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>510</width>
+        <height>510</height>
+       </size>
+      </property>
+      <property name="interactive">
+       <bool>true</bool>
+      </property>
+      <property name="sceneRect">
+       <rectf>
+        <x>0.000000000000000</x>
+        <y>0.000000000000000</y>
+        <width>500.000000000000000</width>
+        <height>500.000000000000000</height>
+       </rectf>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="ship_1_label">
+        <property name="text">
+         <string>ship 1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="ship_2_label">
+        <property name="text">
+         <string>ship 2</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="ship_3_label">
+        <property name="text">
+         <string>ship 3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="ship_4_label">
+        <property name="text">
+         <string>ship 4</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="Field" name="field_1_graphicsView">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>510</width>
+        <height>510</height>
+       </size>
+      </property>
+      <property name="sceneRect">
+       <rectf>
+        <x>0.000000000000000</x>
+        <y>0.000000000000000</y>
+        <width>500.000000000000000</width>
+        <height>500.000000000000000</height>
+       </rectf>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Field</class>
+   <extends>QGraphicsView</extends>
+   <header>field.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
