@@ -18,5 +18,5 @@ Field::Field(QWidget *parent) :
     };
 
     setScene(scene);
-    //show();
+    show();
 }
