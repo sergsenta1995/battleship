@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1111</width>
-    <height>750</height>
+    <width>1346</width>
+    <height>725</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,48 +18,18 @@
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>1028</width>
-     <height>738</height>
+     <width>1211</width>
+     <height>721</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="Field" name="field_2_graphicsView">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>510</width>
-        <height>510</height>
-       </size>
-      </property>
-      <property name="interactive">
-       <bool>true</bool>
-      </property>
-      <property name="sceneRect">
-       <rectf>
-        <x>0.000000000000000</x>
-        <y>0.000000000000000</y>
-        <width>500.000000000000000</width>
-        <height>500.000000000000000</height>
-       </rectf>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="Ship" name="ship_1_label">
+       <widget class="Ship" name="ship_4_label">
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>200</width>
           <height>50</height>
          </size>
         </property>
@@ -67,26 +37,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="images.qrc">:/images/ships/ship_1.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="Ship" name="ship_2_label">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="images.qrc">:/images/ships/ship_2.png</pixmap>
+         <pixmap resource="images.qrc">:/images/ships/ship_4.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -113,10 +64,10 @@
        </widget>
       </item>
       <item>
-       <widget class="Ship" name="ship_4_label">
+       <widget class="Ship" name="ship_2_label">
         <property name="maximumSize">
          <size>
-          <width>200</width>
+          <width>100</width>
           <height>50</height>
          </size>
         </property>
@@ -124,7 +75,26 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="images.qrc">:/images/ships/ship_4.png</pixmap>
+         <pixmap resource="images.qrc">:/images/ships/ship_2.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Ship" name="ship_1_label">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="images.qrc">:/images/ships/ship_1.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -146,9 +116,72 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>510</width>
-        <height>510</height>
+        <width>0</width>
+        <height>0</height>
        </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>500</width>
+        <height>500</height>
+       </size>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="interactive">
+       <bool>true</bool>
+      </property>
+      <property name="sceneRect">
+       <rectf>
+        <x>0.000000000000000</x>
+        <y>0.000000000000000</y>
+        <width>510.000000000000000</width>
+        <height>510.000000000000000</height>
+       </rectf>
+      </property>
+      <property name="dragMode">
+       <enum>QGraphicsView::NoDrag</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="Field" name="field_2_graphicsView">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>500</width>
+        <height>500</height>
+       </size>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="interactive">
+       <bool>true</bool>
       </property>
       <property name="sceneRect">
        <rectf>
@@ -157,6 +190,9 @@
         <width>500.000000000000000</width>
         <height>500.000000000000000</height>
        </rectf>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>

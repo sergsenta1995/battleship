@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_HPP
-#define MAINWINDOW_HPP
+#ifndef MAIN_WINDOW_HPP
+#define MAIN_WINDOW_HPP
 
 #include <QMainWindow>
 
@@ -18,4 +18,4 @@ private:
     Ui::MainWindow *ui;
 };
 
-#endif // MAINWINDOW_HPP
+#endif // MAIN_WINDOW_HPP
