@@ -10,8 +10,6 @@ public:
 protected:
     //! События для обработи Drag and Drop-а.
     void mousePressEvent(QMouseEvent *event) override;
-    //void mouseMoveEvent(QMouseEvent *event) override;
-    //void mouseReleaseEvent(QMouseEvent *event) override;
 
 private:
 

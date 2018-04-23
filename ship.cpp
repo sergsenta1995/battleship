@@ -3,13 +3,9 @@
 #include <QMimeData>
 #include <QDrag>
 
-#include <QDebug>
-
 Ship::Ship(QWidget *parent) :
     QLabel(parent)
-{
-
-}
+{}
 
 void Ship::mousePressEvent(QMouseEvent *event)
 {
@@ -18,22 +14,22 @@ void Ship::mousePressEvent(QMouseEvent *event)
         QPixmap pixmap = *this->pixmap();
         pixmap = pixmap.scaled(this->maximumSize());
 
-        QByteArray itemData;
-        QDataStream dataStream(&itemData, QIODevice::WriteOnly);
-        dataStream << pixmap << QPoint(event->pos());
 
-        QMimeData *mimeData = new QMimeData;
-        mimeData->setData("application/x-dnditemdata", itemData);
+        QByteArray item_data;
+        QDataStream data_stream(&item_data, QIODevice::WriteOnly);
+        data_stream << QPoint(event->pos());
+
+        QMimeData *mime_data = new QMimeData;
+        mime_data->setImageData(pixmap);
+        mime_data->setData("application/x-dnditemdata", item_data);
 
         QDrag *drag = new QDrag(this);
-        drag->setMimeData(mimeData);
+        drag->setMimeData(mime_data);
         drag->setPixmap(pixmap);
         drag->setHotSpot(event->pos());
 
-
-        if (drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction) == Qt::MoveAction)
-        {
-            this->close();
-        }
+        drag->start();
     }
+
+    QLabel::mousePressEvent(event);
 }
