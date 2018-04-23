@@ -19,6 +19,8 @@ set(SOURCES main.cpp
     field.cpp
     ship.hpp
     ship.cpp
+    square.hpp
+    square.cpp
     )
 
 set(RESOURCES
