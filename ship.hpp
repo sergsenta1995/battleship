@@ -4,6 +4,7 @@
 #include <QLabel>
 
 class Ship : public QLabel {
+    Q_OBJECT
 public:
     explicit Ship(QWidget *parent = nullptr);
 
@@ -12,6 +13,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
+    int number_of_ship;
 
 };
 

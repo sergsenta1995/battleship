@@ -13,6 +13,8 @@ QT5_WRAP_UI(UI_FILES main-window.ui)
 
 
 set(SOURCES main.cpp
+    business-logic-layer.hpp
+    business-logic-layer.cpp
     main-window.hpp
     main-window.cpp
     field.hpp

@@ -4,6 +4,8 @@
 #include <QGraphicsView>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QScopedPointer>
+#include "business-logic-layer.hpp"
 
 class Field : public QGraphicsView {
 public:
@@ -15,6 +17,7 @@ protected:
 
 private:
     const int FIELD_SIZE = 50;
+    QScopedPointer<BusinessLogicLayer> game_logic;
 };
 
 #endif // FIELD_HPP
