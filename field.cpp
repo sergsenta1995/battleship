@@ -6,7 +6,8 @@
 
 Field::Field(QWidget *parent) :
     QGraphicsView(parent),
-    game_logic(new BusinessLogicLayer())
+    game_logic(new BusinessLogicLayer()),
+    ships_group(new QGraphicsItemGroup())
 {    
     const int field_dimension = 10;
     char letters[field_dimension] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
@@ -24,10 +25,10 @@ Field::Field(QWidget *parent) :
         }
     };
 
+    scene->addItem(ships_group);
+
     setScene(scene);
     show();
-
-    //setAcceptDrops(true);
 }
 
 
@@ -49,6 +50,8 @@ void Field::dropEvent(QDropEvent *event)
     int actual_x = event->pos().x() - offset.x();
     int actual_y = event->pos().y() - offset.y();
     QRect drag_image_rect(actual_x, actual_y, ship_image.width(), ship_image.height());
+
+    //int number_of_decks = drag_image_rect.
 
     // Когда перетаскиваемый корбль сильно вылезает за границу.
     if (drag_image_rect.x() < -(FIELD_SIZE / 2) || drag_image_rect.y() < -(FIELD_SIZE / 2))
@@ -75,7 +78,7 @@ void Field::dropEvent(QDropEvent *event)
 
             if (game_logic->place_ship(ship_begin_point, ship_end_point) == true)
             {
-                this->scene()->addItem(temp_pix_item);
+                ships_group->addToGroup(temp_pix_item);
             }
 
             return;
@@ -85,3 +88,14 @@ void Field::dropEvent(QDropEvent *event)
     QGraphicsView::dropEvent(event);
 }
 
+void Field::clear()
+{
+    //scene()->removeItem(ships_group);
+    foreach( QGraphicsItem *item, scene()->items(ships_group->boundingRect())) {
+       if(item->group() == ships_group ) {
+          scene()->removeItem(item);
+       }
+    }
+
+    game_logic->clear();
+}

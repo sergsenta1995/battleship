@@ -14,6 +14,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    void clear_field();
+
+private slots:
+    void on_clear_field_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

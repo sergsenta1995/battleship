@@ -7,6 +7,7 @@
 
 #include <QDebug>
 
+
 class BusinessLogicLayer : QObject {
     Q_OBJECT
 
@@ -33,11 +34,13 @@ public:
         qDebug() << "===================";
     }
 
+    void clear();
+
 private:
     bool check_ship(const QPoint &begin, const QPoint &end);
 
     enum CellState{EMPTY, SHIP, HITING};
-    const int FIELD_DIMENSIOM = 10;
+    const int FIELD_DIMENSION = 10;
     QVector<QVector<CellState> > cells_state;
 };
 
