@@ -20,6 +20,14 @@ signals:
 private slots:
     void on_clear_field_pushButton_clicked();
 
+    void on_rotate_1_desk_ship_pushButton_clicked();
+
+    void on_rotate_2_desk_ship_pushButton_clicked();
+
+    void on_rotate_3_desk_ship_pushButton_clicked();
+
+    void on_rotate_4_desk_ship_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
