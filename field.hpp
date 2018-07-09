@@ -22,6 +22,7 @@ public slots:
 
 private:
     const int FIELD_SIZE = 50;
+    int number_of_ship[4] = {4, 3, 2, 1};
     QScopedPointer<BusinessLogicLayer> game_logic;
     QGraphicsItemGroup *ships_group;
 };

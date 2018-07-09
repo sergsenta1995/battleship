@@ -3,6 +3,7 @@
 
 #include <QMimeData>
 #include <QGraphicsRectItem>
+#include <QtGlobal>
 
 Field::Field(QWidget *parent) :
     QGraphicsView(parent),
@@ -51,7 +52,7 @@ void Field::dropEvent(QDropEvent *event)
     int actual_y = event->pos().y() - offset.y();
     QRect drag_image_rect(actual_x, actual_y, ship_image.width(), ship_image.height());
 
-    //int number_of_decks = drag_image_rect.
+    int number_of_decks = qMax(ship_image.width() / 50, ship_image.height() / 50);
 
     // Когда перетаскиваемый корбль сильно вылезает за границу.
     if (drag_image_rect.x() < -(FIELD_SIZE / 2) || drag_image_rect.y() < -(FIELD_SIZE / 2))
@@ -76,8 +77,11 @@ void Field::dropEvent(QDropEvent *event)
             int ship_end_point_y = (i->pos().y() + drag_image_rect.height()) / FIELD_SIZE;
             QPoint ship_end_point(ship_end_point_x, ship_end_point_y);
 
-            if (game_logic->place_ship(ship_begin_point, ship_end_point) == true)
+            qDebug() << "number of " << number_of_ship[number_of_decks - 1];
+            if (number_of_ship[number_of_decks - 1] > 0 &&
+                game_logic->place_ship(ship_begin_point, ship_end_point) == true)
             {
+                --number_of_ship[number_of_decks - 1];
                 ships_group->addToGroup(temp_pix_item);
             }
 
