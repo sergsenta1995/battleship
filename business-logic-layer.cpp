@@ -11,7 +11,7 @@ BusinessLogicLayer::BusinessLogicLayer() :
 }
 
 bool BusinessLogicLayer::place_ship(const QPoint &begin, const QPoint &end)
-{    
+{
    int begin_x = begin.x() == 0 ? 0 : begin.x() - 1;
    int begin_y = begin.y() == 0 ? 0 : begin.y() - 1;
    int end_x = end.x() == FIELD_DIMENSION ? FIELD_DIMENSION : end.x() + 1;

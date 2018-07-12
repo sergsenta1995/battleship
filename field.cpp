@@ -43,21 +43,26 @@ void Field::dropEvent(QDropEvent *event)
 {    
     QPixmap ship_image = qvariant_cast<QPixmap>(event->mimeData()->imageData());
 
+    // Извлекаем смещение относительно позиции курсора, за которую схватили корабль.
     QByteArray item_data = event->mimeData()->data("application/x-dnditemdata");
     QDataStream temp_data_stream(&item_data, QIODevice::ReadOnly);
-    QPoint offset;
-    temp_data_stream >> offset;
+    QPoint cursor_offset;
+    temp_data_stream >> cursor_offset;
 
-    int actual_x = event->pos().x() - offset.x();
-    int actual_y = event->pos().y() - offset.y();
-    QRect drag_image_rect(actual_x, actual_y, ship_image.width(), ship_image.height());
+    int left_upper_x = event->pos().x() - cursor_offset.x();
+    int left_upper_y = event->pos().y() - cursor_offset.y();
+    QRect drag_image_rect(left_upper_x, left_upper_y, ship_image.width(), ship_image.height());
 
     int number_of_decks = qMax(ship_image.width() / 50, ship_image.height() / 50);
 
     // Когда перетаскиваемый корбль сильно вылезает за границу.
-    if (drag_image_rect.x() < -(FIELD_SIZE / 2) || drag_image_rect.y() < -(FIELD_SIZE / 2))
+    if (drag_image_rect.x() < -(FIELD_SIZE / 2) || drag_image_rect.y() < -(FIELD_SIZE / 2) ||
+        drag_image_rect.x() > (FIELD_SIZE / 2) || drag_image_rect.y() > (FIELD_SIZE / 2))
+    {
         return;
+    }
 
+    // Определяем куда сброшен корабль.
     foreach (QGraphicsItem *i, scene()->items(Qt::AscendingOrder))
     {
         QRectF item_bounding_rect = i->sceneBoundingRect();
@@ -69,21 +74,25 @@ void Field::dropEvent(QDropEvent *event)
         // Если перетаскиваемый корабль пересекает центр поля, то он устанавливается в это поле.
         if (intersection_rect.contains(item_bounding_rect.center()))
         {
-            QGraphicsPixmapItem *temp_pix_item = new QGraphicsPixmapItem(ship_image);
-            temp_pix_item->setPos(i->pos());                        
+            QGraphicsPixmapItem *dropped_pix = new QGraphicsPixmapItem(ship_image);
+            dropped_pix->setPos(i->pos());
 
+            // Определяем поля в которые попадает корабль.
             QPoint ship_begin_point(i->pos().x() / FIELD_SIZE, i->pos().y() / FIELD_SIZE);
             int ship_end_point_x = (i->pos().x() + drag_image_rect.width()) / FIELD_SIZE;
             int ship_end_point_y = (i->pos().y() + drag_image_rect.height()) / FIELD_SIZE;
             QPoint ship_end_point(ship_end_point_x, ship_end_point_y);
 
-            qDebug() << "number of " << number_of_ship[number_of_decks - 1];
+            // Если еще не разместили все корабли и
+            // корабль попадает в корректные поля
             if (number_of_ship[number_of_decks - 1] > 0 &&
                 game_logic->place_ship(ship_begin_point, ship_end_point) == true)
             {
                 --number_of_ship[number_of_decks - 1];
-                ships_group->addToGroup(temp_pix_item);
+                ships_group->addToGroup(dropped_pix);
             }
+            else
+                qDebug() << "no";
 
             return;
         }
