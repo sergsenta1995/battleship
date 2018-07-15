@@ -2,9 +2,18 @@
 #define BOT_H
 
 
-class bot {
+#include <vector>
+
+class Bot {
 public:
-    bot();
+    Bot();
+
+    bool generateRotation();
+    int generateSide();
+    std::vector<int> generatePositionShip(int number_of_desk, bool rotation);
+
+private:
+    const int LENGTH_FIELD = 10;
 };
 
 #endif // BOT_H
